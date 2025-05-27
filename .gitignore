@@ -1,0 +1,20 @@
+# Backend
+/backend/target/
+/backend/.mvn/
+/backend/.idea/
+**/*.iml
+
+# Frontend
+/frontend/node_modules/
+/frontend/build/
+
+# Vault
+/vault/file/
+/vault/.vault-token
+
+# System
+.DS_Store
+Thumbs.db
+*.log
+*.env
+*.secret
