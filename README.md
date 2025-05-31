@@ -38,3 +38,10 @@ This is the backend service for a **Secure File Sharing System**, built using **
    ```bash
    git clone https://github.com/your-username/secure-file-share.git
    cd secure-file-share
+
+
+## 🧪 Example API Response
+
+Here’s what a successful user creation response looks like in Postman:
+
+![Test](./assets/screenshot1.png)
