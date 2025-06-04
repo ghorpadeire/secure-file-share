@@ -10,11 +10,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 @Configuration
 public class SecurityConfig {
 
-    // ✅ Security rules for endpoint access
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-            .csrf(csrf -> csrf.disable())
+            .csrf(csrf -> csrf.disable()) // Disable CSRF for Postman testing
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/users", "/api/auth/login").permitAll()
                 .anyRequest().authenticated()
@@ -22,15 +21,8 @@ public class SecurityConfig {
             .build();
     }
 
-    // ✅ Add AuthenticationManager bean (this is fine)
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-        return config.getAuthenticationManager();
-    }
-
-    // ✅ THIS is the fix: Declare AuthenticationConfiguration explicitly
-    @Bean
-    public AuthenticationConfiguration authenticationConfiguration() {
-        return new AuthenticationConfiguration();
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+        return authConfig.getAuthenticationManager();
     }
 }
