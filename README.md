@@ -17,7 +17,7 @@ This is the backend service for a **Secure File Sharing System**, built using **
 
 ## 📦 Features
 
-- User registration with unique email and password
+- User registration with unique username and password
 - RESTful APIs with JSON payloads
 - PostgreSQL for data persistence
 - Dockerized backend and database

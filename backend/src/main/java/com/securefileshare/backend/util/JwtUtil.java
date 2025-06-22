@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class JwtUtil {
 
     private static final String SECRET = System.getenv("JWT_SECRET_KEY"); 
-    // Make sure this env variable is set in your system or docker
+    // Make sure this env variable is set in your system or Docker
 
     public String generateToken(String username) {
         return Jwts.builder()
