@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import com.securefileshare.backend.service.CustomUserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.http.HttpMethod;
@@ -12,7 +13,7 @@ import org.springframework.http.HttpMethod;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http, CustomUserDetailsService userDetailsService) throws Exception {
         return http
             .csrf(csrf -> csrf.disable()) // Disable CSRF for Postman testing
             .authorizeHttpRequests(auth -> auth
@@ -20,6 +21,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/auth/login").permitAll()
                 .anyRequest().authenticated()
             )
+            .userDetailsService(userDetailsService)
             .build();
     }
 
